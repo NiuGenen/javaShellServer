@@ -1,0 +1,18 @@
+<?xml version="1.0"?>  
+<!DOCTYPE hibernate-mapping PUBLIC   
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
+      
+<hibernate-mapping>  
+    <class name="ng.jms.hbm.Table_news" table="[dbo].[news]">
+		<id name="id" column="id" type="int">
+			<!-- let sql server choose the id-->
+			<generator class="native" />
+		</id>
+		<property name="userid" column="userid" type="int"/>
+		<property name="topicid" column="topicid" type="int"/>
+        <property name="title" column="title" type="string"/>
+        <property name="cntnt" column="cntnt" type="string"/>
+        <property name="time" column="time" type="long"/>
+    </class>  
+</hibernate-mapping>  

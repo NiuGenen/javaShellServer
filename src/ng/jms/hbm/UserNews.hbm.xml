@@ -1,0 +1,18 @@
+<?xml version="1.0"?>  
+<!DOCTYPE hibernate-mapping PUBLIC   
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
+      
+<hibernate-mapping>  
+    <class name="ng.jms.hbm.Join_user_news" table="[dbo].[user]">
+		<id name="userid" column="id" type="int">
+			<!-- let sql server choose the id-->
+			<generator class="native" />
+		</id>
+        <property name="username" column="name" type="string"></property>
+        <set name="news"><!-- property in user_news -->
+        	<key column="userid"/><!-- FK in news -->
+        	<one-to-many class="ng.jms.hbm.Table_news"/><!-- news class -->
+        </set>
+    </class>  
+</hibernate-mapping>  

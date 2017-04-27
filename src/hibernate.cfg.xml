@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC  
+    "-//Hibernate/Hibernate Configuration DTD 3.0//EN"  
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">  
+  
+<hibernate-configuration>  
+    <session-factory >  
+        <!-- sql server 数据库驱动 -->  
+        <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>  
+        <!-- sql server 数据库名称 -->  
+        <property name="hibernate.connection.url">jdbc:sqlserver://123.206.54.159:1433;DatabaseName=mwexp</property>  
+        <!-- 数据库的登陆用户名 -->  
+        <property name="hibernate.connection.username">mw</property>  
+        <!-- 数据库的登陆密码 -->  
+        <property name="hibernate.connection.password">mw&amp;123456</property>  
+        <!-- 方言：为每一种数据库提供适配器，方便转换 -->  
+        <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>  
+        <!--在控制台显示SQL语句-->
+        <property name="show_sql">true</property>
+        
+        <mapping resource="ng/jms/hbm/User.hbm.xml"/>
+        <mapping resource="ng/jms/hbm/News.hbm.xml"/>
+        <mapping resource="ng/jms/hbm/Topic.hbm.xml"/>
+        <mapping resource="ng/jms/hbm/Subscribe.hbm.xml"/>
+        
+        <mapping resource="ng/jms/hbm/UserTopic.hbm.xml"/>
+        <mapping resource="ng/jms/hbm/TopicUser.hbm.xml"/>
+        <mapping resource="ng/jms/hbm/UserNews.hbm.xml"/>
+        <mapping resource="ng/jms/hbm/NewsUserTopic.hbm.xml"/>
+    </session-factory>  
+</hibernate-configuration> 

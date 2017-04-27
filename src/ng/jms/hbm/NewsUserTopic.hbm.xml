@@ -1,0 +1,22 @@
+<?xml version="1.0"?>  
+<!DOCTYPE hibernate-mapping PUBLIC   
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
+      
+<hibernate-mapping>  
+    <class name="ng.jms.hbm.Join_news_user_topic" table="[dbo].[news]">
+		<id name="newsid" column="id" type="int">
+			<!-- let sql server choose the id-->
+			<generator class="native" />
+		</id>
+        <many-to-one name="user"
+		 class="ng.jms.hbm.Table_user"
+		 column="userid"/><!-- column is FK in news -->
+		<property name="title" column="title" type="string"/>
+		<property name="cntnt" column="cntnt" type="string"/>
+		<property name="time" column="time" type="long"/>
+		<many-to-one name="topic"
+		 class="ng.jms.hbm.Table_topic"
+		 column="topicid"/><!-- column is FK in news -->
+    </class>  
+</hibernate-mapping>  
