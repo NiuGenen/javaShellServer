@@ -27,7 +27,7 @@ import javax.jms.TextMessage;
  * @author Serge Pagop (spagop@redhat.com)
  *
  */
-@MessageDriven(name = "TopicTestMDB", activationConfig = {
+@MessageDriven(name = "TopicTechnologyMDB", activationConfig = {
     @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "jboss/exported/jms/topic/technology"),
     @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Topic"),
     @ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge") })

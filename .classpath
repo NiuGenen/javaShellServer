@@ -17,6 +17,10 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/CodeFiles/eclipse-jee-neon-3-win32-x86_64/workspace/shell_server/sqljdbc42.jar"/>
+	<classpathentry kind="lib" path="D:/CodeFiles/eclipse-jee-neon-3-win32-x86_64/workspace/shell_server/sqljdbc42.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
