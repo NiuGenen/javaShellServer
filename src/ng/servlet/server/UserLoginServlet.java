@@ -10,17 +10,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.criterion.Restrictions;
+
 import ng.jms.hbm.HDB;
-import ng.jms.hbm.Table_topic;
+import ng.jms.hbm.Table_user;
 
 /**
- * Servlet implementation class GetTopicsServlet
+ * Servlet implementation class UserLoginServlet
  */
-@WebServlet("/GetTopicsServlet")
-public class GetTopicsServlet extends HttpServlet {
+@WebServlet("/UserLoginServlet")
+public class UserLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
-    public GetTopicsServlet() {
+    public UserLoginServlet() {
         super();
     }
 
@@ -31,27 +33,22 @@ public class GetTopicsServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String username = request.getParameter("username");
+		String passwd = request.getParameter("passwd");
 		
-		String posttime = request.getParameter("posttime");
-		
-		System.out.println("topics request at " + posttime );
+		System.out.println("user " + username + "login. passwd: " + passwd);
 		
 		DataOutputStream output = new DataOutputStream(response.getOutputStream());
 		
-		List<Object> topics = HDB.getInstance().get(Table_topic.class);
-		StringBuffer ret = new StringBuffer();
-		ret.append("{'topics':[");
-		for(int i = 0; i < topics.size(); ++i){
-			Table_topic t = (Table_topic)(topics.get(i));
-			ret.append("{'id':'" + t.getId() + "','name':'" + t.getName() + "'}");
-			if((i+1)!=topics.size()){
-				ret.append(",");
-			}
+		List<Object> res = HDB.getInstance().get(Table_user.class, 
+				Restrictions.eq("name", username),
+				Restrictions.eq("passwd", passwd));
+		if(res != null && res.size() >= 1){
+			output.writeBytes("{'login':'1'}");
 		}
-		ret.append("]}");
-		//json: {'topics':[{'id':'1','name':'topic'},{...}]}
-		
-		output.writeBytes(ret.toString());
+		else{
+			output.writeBytes("{'login':'0'}");
+		}
 		
 		output.close();
 		
