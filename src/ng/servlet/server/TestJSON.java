@@ -13,7 +13,9 @@ public class TestJSON {
 	private String json3 = "{'array':['a1','a2','a3']}";
 	
 	@Test
-	public void test_json(){
+	public void test_json_resolve(){
+		
+		System.out.println("------in test_json_resolve");
 
 		JSONObject obj1 = new JSONObject(json1);
 		JSONObject obj2 = new JSONObject(json2);
@@ -31,5 +33,19 @@ public class TestJSON {
 		assertEquals("a2", array.get(1));
 		assertEquals("a3", array.get(2));
 		
+	}
+	
+	@Test
+	public void test_json_create(){
+
+		System.out.println("-------in test_json_create");
+		
+		JSONObject obj = new JSONObject();
+		
+		obj.append("append","value");
+		System.out.println(obj.toString());
+		
+		obj.put("put", "value");
+		System.out.println(obj.toString());
 	}
 }

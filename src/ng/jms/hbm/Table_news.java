@@ -7,6 +7,7 @@ public class Table_news {
 	private String cntnt;
 	private long time;
 	private int topicid;
+	
 	public int getId() {
 		return id;
 	}
