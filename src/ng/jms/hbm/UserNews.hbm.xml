@@ -9,7 +9,8 @@
 			<!-- let sql server choose the id-->
 			<generator class="native" />
 		</id>
-        <property name="username" column="name" type="string"></property>
+        <property name="name" column="name" type="string"></property>
+        <property name="passwd" column="passwd" type="string"></property>
         <set name="news"><!-- property in user_news -->
         	<key column="userid"/><!-- FK in news -->
         	<one-to-many class="ng.jms.hbm.Table_news"/><!-- news class -->

@@ -6,7 +6,8 @@ import java.util.Set;
 public class Join_user_news {
 
 	private int userid;
-	private String username;
+	private String name;
+	private String passwd;
 	private Set<Table_news> news = new HashSet<>();
 	public int getUserid() {
 		return userid;
@@ -14,16 +15,22 @@ public class Join_user_news {
 	public void setUserid(int userid) {
 		this.userid = userid;
 	}
-	public String getUsername() {
-		return username;
+	public String getName() {
+		return name;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public Set<Table_news> getNews() {
 		return news;
 	}
 	public void setNews(Set<Table_news> news) {
 		this.news = news;
+	}
+	public String getPasswd() {
+		return passwd;
+	}
+	public void setPasswd(String passwd) {
+		this.passwd = passwd;
 	}
 }

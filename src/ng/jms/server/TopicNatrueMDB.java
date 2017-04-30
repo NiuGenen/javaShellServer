@@ -10,6 +10,12 @@ import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.TextMessage;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import ng.jms.hbm.HDB;
+import ng.jms.hbm.Table_news;
+
 @JMSDestinationDefinitions(
 	    value = {
 	        @JMSDestinationDefinition(
@@ -44,11 +50,24 @@ public class TopicNatrueMDB implements MessageListener {
             if (rcvMessage instanceof TextMessage) {
                 msg = (TextMessage) rcvMessage;
                 LOGGER.info("Received Message from topic nature: " + msg.getText());
+                
+                JSONObject obj = new JSONObject(msg.getText());
+                
+                Table_news table_news = new Table_news();
+                table_news.setCntnt( obj.getString("cntnt"));
+                table_news.setTime( obj.getLong("time"));
+                table_news.setTitle( obj.getString("title"));
+                table_news.setTopicid( obj.getInt("topicid"));
+                table_news.setUserid( obj.getInt("userid"));
+                
+                HDB.getInstance().save(table_news);
             } else {
                 LOGGER.warning("Message of wrong type nature: " + rcvMessage.getClass().getName());
             }
         } catch (JMSException e) {
             throw new RuntimeException(e);
+        } catch(JSONException e){
+        	LOGGER.warning("Cannot resolve json in TopicNatrueMDB.");
         }
     }
 }

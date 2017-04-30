@@ -126,7 +126,7 @@ public class TestHDB {
 			Join_user_news u = (Join_user_news)r;
 
 			System.out.print(u.getUserid() + " ");
-			System.out.println(u.getUsername());
+			System.out.println(u.getName());
 			
 			Set<Table_news> news = u.getNews();
 			for(Table_news n: news){
