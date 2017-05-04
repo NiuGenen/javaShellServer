@@ -43,10 +43,10 @@ public class UserSubscribeServlet extends HttpServlet {
 			String topicname = request.getParameter("topicname");
 
 			if(ifsub){
-				Table_subscribe sub = new Table_subscribe();
-				sub.setUserid( userid );
-				sub.setTopicid( topicid );
-				HDB.getInstance().save( sub );
+				//Table_subscribe sub = new Table_subscribe();
+				//sub.setUserid( userid );
+				//sub.setTopicid( topicid );
+				//HDB.getInstance().save( sub );
 				
 				List<Object> res = HDB.getInstance().get(Join_user_topic.class, 
 						Restrictions.eq("id", userid) );
@@ -61,10 +61,10 @@ public class UserSubscribeServlet extends HttpServlet {
 				}
 			}
 			else{	//ubsub
-				Table_subscribe sub = new Table_subscribe();
-				sub.setUserid( userid );
-				sub.setTopicid( topicid );
-				HDB.getInstance().save( sub );
+				//Table_subscribe sub = new Table_subscribe();
+				//sub.setUserid( userid );
+				//sub.setTopicid( topicid );
+				//HDB.getInstance().save( sub );
 				
 				List<Object> res = HDB.getInstance().get(Join_user_topic.class, 
 						Restrictions.eq("id", userid) );
