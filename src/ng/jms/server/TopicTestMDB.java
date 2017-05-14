@@ -19,14 +19,6 @@ import javax.jms.TextMessage;
 	        )
 	    })
 
-/**
- * <p>
- * A simple Message Driven Bean that asynchronously receives and processes the messages that are sent to the topic.
- * </p>
- *
- * @author Serge Pagop (spagop@redhat.com)
- *
- */
 @MessageDriven(name = "TopicTestMDB", activationConfig = {
     @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "jboss/exported/jms/topic/test"),
     @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Topic"),
@@ -35,9 +27,6 @@ public class TopicTestMDB implements MessageListener {
 
     private final static Logger LOGGER = Logger.getLogger(TopicTestMDB.class.toString());
 
-    /**
-     * @see MessageListener#onMessage(Message)
-     */
     public void onMessage(Message rcvMessage) {
         TextMessage msg = null;
         try {
